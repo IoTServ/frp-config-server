@@ -5,4 +5,4 @@ frp online config server
 ###  服务器运行的Python文件入口：manage.py
 
 ##  Server：https://github.com/IoTServ/frp-config-server
-##  https://github.com/IoTServ/frp-with-config-server
+##  Frpc：https://github.com/IoTServ/frp-with-config-server
