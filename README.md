@@ -7,8 +7,8 @@ frp online config server
 ##  Server：https://github.com/IoTServ/frp-config-server
 ##  Frpc：https://github.com/IoTServ/frp-with-config-server
 ![image](https://github.com/IoTServ/frp-config-server/blob/master/img/Common5.png?raw=true)
-![image](https://github.com/IoTServ/McuNode-server/blob/master/img/addhttp.png?raw=true)
-![image](https://github.com/IoTServ/McuNode-server/blob/master/img/api-ini.png?raw=true)
-![image](https://github.com/IoTServ/McuNode-server/blob/master/img/frpc.png?raw=true)
-![image](https://github.com/IoTServ/McuNode-server/blob/master/img/index.png?raw=true)
-![image](https://github.com/IoTServ/McuNode-server/blob/master/img/showhttp.png?raw=true)
+![image](https://github.com/IoTServ/frp-config-server/blob/master/img/addhttp.png?raw=true)
+![image](https://github.com/IoTServ/frp-config-server/blob/master/img/api-ini.png?raw=true)
+![image](https://github.com/IoTServ/frp-config-server/blob/master/img/frpc.png?raw=true)
+![image](https://github.com/IoTServ/frp-config-server/blob/master/img/index.png?raw=true)
+![image](https://github.com/IoTServ/frp-config-server/blob/master/img/showhttp.png?raw=true)
