@@ -1,0 +1,96 @@
+[common]
+{% if comm.server_addr %}server_addr = {{ comm.server_addr }}{% endif %}
+{% if comm.server_port %}server_port = {{ comm.server_port }}{% endif %}
+{% if comm.log_file %}log_file = {{ comm.log_file }}{% endif %}
+{% if comm.log_level %}log_level = {{ comm.log_level }}{% endif %}
+{% if comm.log_max_days %}log_max_days = {{ comm.log_max_days }}{% endif %}
+{% if comm.privilege_token %}privilege_token = {{ comm.privilege_token }}{% endif %}
+{% if comm.admin_addr %}admin_addr = {{ comm.admin_addr }}{% endif %}
+{% if comm.admin_port %}admin_port = {{ comm.admin_port }}{% endif %}
+{% if comm.admin_user %}admin_user = {{ comm.admin_user }}{% endif %}
+{% if comm.admin_pwd %}admin_pwd = {{ comm.admin_pwd }}{% endif %}
+{% if comm.pool_count %}pool_count = {{ comm.pool_count }}{% endif %}
+{% if comm.tcp_mux %}tcp_mux = {{ comm.tcp_mux }}{% endif %}
+{% if comm.user %}user = {{ comm.user }}{% endif %}
+{% if comm.login_fail_exit %}login_fail_exit = {{ comm.login_fail_exit }}{% endif %}
+{% if comm.protocol %}protocol = {{ comm.protocol }}{% endif %}
+{% if comm.start %}start = {{ comm.start }}{% endif %}
+{% if comm.heartbeat_interval %}heartbeat_interval = {{ comm.heartbeat_interval }}{% endif %}
+{% if comm.heartbeat_timeout %}heartbeat_timeout = {{ comm.heartbeat_timeout }}{% endif %}
+{% for kv in http %}
+[{{ kv.name }}]
+type = http
+{% if kv.local_ip %}local_ip = {{ kv.local_ip }}{% endif%}
+{% if kv.local_port %}local_port = {{ kv.local_port }}{% endif%}
+{% if kv.use_encryption %}use_encryption = true{% else %}use_encryption = false{% endif%}
+{% if kv.use_compression %}use_compression = true{% else %}use_compression = false{% endif%}
+{% if kv.http_user %}http_user = {{ kv.http_user }}{% endif%}
+{% if kv.http_pwd %}http_pwd = {{ kv.http_pwd }}{% endif%}
+{% if kv.subdomain %}subdomain = {{ kv.subdomain }}{% endif%}
+{% if kv.custom_domains %}custom_domains = {{ kv.custom_domains }}{% endif%}
+{% if kv.locations %}locations = {{ kv.locations }}{% endif%}
+{% if kv.host_header_rewrite %}host_header_rewrite = {{ kv.host_header_rewrite }}{% endif%}
+{% endfor %}
+{% for kv in https %}
+[{{ kv.name }}]
+type = https
+{% if kv.local_ip %}local_ip = {{ kv.local_ip }}{% endif%}
+{% if kv.local_port %}local_port = {{ kv.local_port }}{% endif%}
+{% if kv.use_encryption %}use_encryption = true{% else %}use_encryption = false{% endif%}
+{% if kv.use_compression %}use_compression = true{% else %}use_compression = false{% endif%}
+{% if kv.subdomain %}subdomain = {{ kv.subdomain }}{% endif%}
+{% if kv.custom_domains %}custom_domains = {{ kv.custom_domains }}{% endif%}
+{% endfor %}
+{% for kv in phttp %}
+[{{ kv.name }}]
+type = tcp
+{% if kv.remote_port %}remote_port = {{ kv.remote_port }}{% endif%}
+plugin = http_proxy
+{% if kv.plugin_http_user %}plugin_http_user = {{ kv.plugin_http_user }}{% endif%}
+{% if kv.plugin_http_passwd %}plugin_http_passwd = {{ kv.plugin_http_passwd }}{% endif%}
+{% endfor %}
+{% for kv in usocket %}
+[{{ kv.name }}]
+type = tcp
+{% if kv.remote_port %}remote_port = {{ kv.remote_port }}{% endif%}
+plugin = unix_domain_socket
+{% if kv.plugin_unix_path %}plugin_unix_path = {{ kv.plugin_unix_path }}{% endif%}
+{% endfor %}
+{% for kv in tcp %}
+[{{ kv.name }}]
+type = tcp
+{% if kv.local_ip %}local_ip = {{ kv.local_ip }}{% endif%}
+{% if kv.local_port %}local_port = {{ kv.local_port }}{% endif%}
+{% if kv.use_encryption %}use_encryption = true{% else %}use_encryption = false{% endif%}
+{% if kv.use_compression %}use_compression = true{% else %}use_compression = false{% endif%}
+{% if kv.remote_port %}remote_port = {{ kv.remote_port }}{% endif%}
+{% endfor %}
+{% for kv in udp %}
+[{{ kv.name }}]
+type = udp
+{% if kv.local_ip %}local_ip = {{ kv.local_ip }}{% endif%}
+{% if kv.local_port %}local_port = {{ kv.local_port }}{% endif%}
+{% if kv.use_encryption %}use_encryption = true{% else %}use_encryption = false{% endif%}
+{% if kv.use_compression %}use_compression = true{% else %}use_compression = false{% endif%}
+{% if kv.remote_port %}remote_port = {{ kv.remote_port }}{% endif%}
+{% endfor %}
+{% for kv in stcp %}
+[{{ kv.name }}]
+type = stcp
+{% if kv.local_ip %}local_ip = {{ kv.local_ip }}{% endif%}
+{% if kv.local_port %}local_port = {{ kv.local_port }}{% endif%}
+{% if kv.use_encryption %}use_encryption = true {% else %}use_encryption = false{% endif%}
+{% if kv.use_compression %}use_compression = true {% else %}use_compression = false{% endif%}
+{% if kv.sk %}sk = {{ kv.sk }}{% endif%}
+{% endfor %}
+{% for kv in STCPVistor %}
+[{{ kv.name }}]
+role = vistor
+type = stcp
+{% if kv.server_name %}server_name = {{ kv.server_name }}{% endif%}
+{% if kv.bind_addr %}bind_addr = {{ kv.bind_addr }}{% endif%}
+{% if kv.bind_port %}bind_port = {{ kv.bind_port }}{% endif%}
+{% if kv.use_encryption %}use_encryption = true{% else %}use_encryption = false{% endif%}
+{% if kv.use_compression %}use_compression = true{% else %}use_compression = false{% endif%}
+{% if kv.sk %}sk = {{ kv.sk }}{% endif%}
+{% endfor %}

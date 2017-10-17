@@ -1,0 +1,8 @@
+{% extends "user/base.html" %}
+{% import "bootstrap/wtf.html" as wtf%}
+{% block conntent %}
+<div class="list-group">
+    <h4 class="list-group-item active"><strong>添加</strong></h4>
+    {{ wtf.quick_form(form) }}
+</div>
+{% endblock %}

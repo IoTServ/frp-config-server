@@ -1,0 +1,61 @@
+{% extends "user/showbasecomm.html" %}
+{% block conntent %}
+<div class="list-group">
+    <h4 class="list-group-item active"><strong>Common管理</strong></h4>
+    <table class="table table-striped table-hover ">
+    <thead>
+    <tr>
+        <th>frpc用户名</th>
+        <th>service_id</th>
+        <th>name</th>
+        <th>server_addr</th>
+        <th>server_port</th>
+        <th>log_file</th>
+        <th>log_level</th>
+        <th>log_max_days</th>
+        <th>privilege_token</th>
+        <th>admin_addr</th>
+        <th>admin_port</th>
+        <th>admin_user</th>
+        <th>admin_pwd</th>
+        <th>pool_count</th>
+        <th>tcp_mux</th>
+        <th>login_fail_exit</th>
+        <th>protocol</th>
+        <th>start</th>
+        <th>heartbeat_interval</th>
+        <th>heartbeat_timeout</th>
+        <th><a href="{{ url_for('manage.addCommon') }}" target="_blank">添加一个</a></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    {% for common in commons %}
+    <tr class="info">
+        <th>{{ common.user }}</th>
+        <th>{{ common.id }}</th>
+        <th>{{ common.name }}</th>
+        <th>{{ common.server_addr }}</th>
+        <th>{{ common.server_port }}</th>
+        <th>{{ common.log_file }}</th>
+        <th>{{ common.log_level }}</th>
+        <th>{{ common.log_max_days }}</th>
+        <th>{{ common.privilege_token }}</th>
+        <th>{{ common.admin_addr }}</th>
+        <th>{{ common.admin_port }}</th>
+        <th>{{ common.admin_user }}</th>
+        <th>{{ common.admin_pwd }}</th>
+        <th>{{ common.pool_count }}</th>
+        <th>{{ common.tcp_mux }}</th>
+        <th>{{ common.login_fail_exit }}</th>
+        <th>{{ common.protocol }}</th>
+        <th>{{ common.start }}</th>
+        <th>{{ common.heartbeat_interval }}</th>
+        <th>{{ common.heartbeat_timeout }}</th>
+        <th><a href="{{ url_for('manage.delProxy',type='comm',id=common.id) }}" target="_blank">删除</a></th>
+    </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "user/showbase.html" %}
+{% block conntent %}
+<div class="list-group">
+    <h4 class="list-group-item active"><strong>管理PluginUnixSocket</strong></h4>
+    <table class="table table-striped table-hover ">
+    <thead>
+    <tr>
+        <th>service_id</th>
+        <th>name</th>
+        <th>remote_port</th>
+        <th>plugin_unix_path</th>
+        <th><a href="{{ url_for('manage.addPluginUnixSocket') }}" target="_blank">添加一个</a></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    {% for psocket in psockets %}
+    <tr class="info">
+        <th>{{ psocket.service_id }}</th>
+        <th>{{ psocket.name }}</th>
+        <th>{{ psocket.remote_port }}</th>
+        <th>{{ psocket.plugin_unix_path }}</th>
+        <th><a href="{{ url_for('manage.delProxy',type='psockets',id=psocket.id) }}" target="_blank">删除</a></th>
+    </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+</div>
+{% endblock %}

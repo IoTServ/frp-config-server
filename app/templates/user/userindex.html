@@ -1,0 +1,11 @@
+{% extends "user/base.html" %}
+{% block conntent %}
+<div class="list-group">
+    <h4 class="list-group-item active"><strong>使用说明：</strong></h4>
+    <p>1.每一个Common代表一个frpc配置文件，添加一个配置文件就需要添加一个Common配置</p>
+    <p>2.其他都是添加需要代理的记录类型，选择添加对应的代理类型到frpc配置文件（Common）</p>
+    <p>3.管理界面可以查看和添加配置</p>
+    <p>3.删除Common配置前需要删除这frpc配置下的其他各种代理类型的配置(即具有相同service_id的其他配置)</p>
+    <p>4.frpc需要使用那个配置文件就需要在frpc输入对应Common里面的用户名（Common第一列）</p>
+</div>
+{% endblock %}

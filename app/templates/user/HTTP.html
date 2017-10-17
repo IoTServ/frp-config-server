@@ -1,0 +1,45 @@
+{% extends "user/showbase.html" %}
+{% block conntent %}
+<div class="list-group">
+    <h4 class="list-group-item active"><strong>HTTP代理管理</strong></h4>
+    <table class="table table-striped table-hover ">
+    <thead>
+    <tr>
+        <th>service_id</th>
+        <th>name</th>
+        <th>local_ip</th>
+        <th>local_port</th>
+        <th>use_encryption</th>
+        <th>use_compression</th>
+        <th>http_user</th>
+        <th>http_pwd</th>
+        <th>subdomain</th>
+        <th>custom_domains</th>
+        <th>locations</th>
+        <th>host_header_rewrite</th>
+        <th><a href="{{ url_for('manage.addHTTP') }}" target="_blank">添加一个</a></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    {% for http in http_s %}
+    <tr class="info">
+        <th>{{ http.service_id }}</th>
+        <th>{{ http.name }}</th>
+        <th>{{ http.local_ip }}</th>
+        <th>{{ http.local_port }}</th>
+        <th>{{ http.use_encryption }}</th>
+        <th>{{ http.use_compression }}</th>
+        <th>{{ http.http_user }}</th>
+        <th>{{ http.http_pwd }}</th>
+        <th>{{ http.subdomain }}</th>
+        <th>{{ http.custom_domains }}</th>
+        <th>{{ http.locations }}</th>
+        <th>{{ http.host_header_rewrite }}</th>
+        <th><a href="{{ url_for('manage.delProxy',type='http',id=http.id) }}" target="_blank">删除</a></th>
+    </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+</div>
+{% endblock %}
