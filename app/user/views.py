@@ -9,6 +9,7 @@ from .. import db
 
 @user.route('/')
 @login_required
+
 def index():
     #相关说明
     return render_template('user/userindex.html')
@@ -80,49 +81,49 @@ def delProxy():
         db.session.commit()
     if type=='tcp':
         tcp = FrpProxy_TCP.query.filter_by(id=id).first()
-        if tcp.servcomm.webuser != current_user:
+        if tcp.webuser != current_user:
             return redirect(url_for('manage.index'))
         db.session.delete(tcp)
         db.session.commit()
     if type=='udp':
         udp = FrpProxy_UDP.query.filter_by(id=id).first()
-        if udp.servcomm.webuser != current_user:
+        if udp.webuser != current_user:
             return redirect(url_for('manage.index'))
         db.session.delete(udp)
         db.session.commit()
     if type=='http':
         http = FrpProxy_HTTP.query.filter_by(id=id).first()
-        if http.servcomm.webuser != current_user:
+        if http.webuser != current_user:
             return redirect(url_for('manage.index'))
         db.session.delete(http)
         db.session.commit()
     if type=='https':
         https = FrpProxy_HTTPS.query.filter_by(id=id).first()
-        if https.servcomm.webuser != current_user:
+        if https.webuser != current_user:
             return redirect(url_for('manage.index'))
         db.session.delete(https)
         db.session.commit()
     if type=='psocket':
         ps = FrpProxy_PluginUnixSocket.query.filter_by(id=id).first()
-        if ps.servcomm.webuser != current_user:
+        if ps.webuser != current_user:
             return redirect(url_for('manage.index'))
         db.session.delete(ps)
         db.session.commit()
     if type=='phttp':
         phttp = FrpProxy_PluginHttp.query.filter_by(id=id).first()
-        if phttp.servcomm.webuser != current_user:
+        if phttp.webuser != current_user:
             return redirect(url_for('manage.index'))
         db.session.delete(phttp)
         db.session.commit()
     if type=='stcp':
         stcp = FrpProxy_STCP.query.filter_by(id=id).first()
-        if stcp.servcomm.webuser != current_user:
+        if stcp.webuser != current_user:
             return redirect(url_for('manage.index'))
         db.session.delete(stcp)
         db.session.commit()
     if type=='stcpvistor':
         stcpvistor = FrpProxy_STCPVistor.query.filter_by(id=id).first()
-        if stcpvistor.servcomm.webuser != current_user:
+        if stcpvistor.webuser != current_user:
             return redirect(url_for('manage.index'))
         db.session.delete(stcpvistor)
         db.session.commit()
