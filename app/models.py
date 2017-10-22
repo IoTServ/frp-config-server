@@ -58,24 +58,24 @@ class FrpServiceCommon(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64))
 
-    server_addr = db.Column(db.String(16))     #0.0.0.0
-    server_port = db.Column(db.String(16))     #7000
+    server_addr = db.Column(db.String(64))     #0.0.0.0
+    server_port = db.Column(db.String(64))     #7000
     log_file =db.Column(db.String(64))         # ./ frpc.log
-    log_level = db.Column(db.String(16))       #info
-    log_max_days = db.Column(db.String(16))     #3
+    log_level = db.Column(db.String(64))       #info
+    log_max_days = db.Column(db.String(64))     #3
     privilege_token = db.Column(db.String(64)) # 12345678
     admin_addr = db.Column(db.String(64))       # 127.0.0.1
-    admin_port = db.Column(db.String(16))     #7400
+    admin_port = db.Column(db.String(64))     #7400
     admin_user = db.Column(db.String(64))       #admin
     admin_pwd = db.Column(db.String(64))        #admin
-    pool_count = db.Column(db.String(16))     #5
-    tcp_mux = db.Column(db.String(16))      #true
+    pool_count = db.Column(db.String(64))     #5
+    tcp_mux = db.Column(db.String(64))      #true
     user = db.Column(db.String(64),unique=True,index=True)         #your_name
-    login_fail_exit = db.Column(db.String(16))#true
-    protocol = db.Column(db.String(16))     #tcp
+    login_fail_exit = db.Column(db.String(64))#true
+    protocol = db.Column(db.String(64))     #tcp
     start = db.Column(db.String(128))        #ssh,dns
-    heartbeat_interval = db.Column(db.String(16))     #30
-    heartbeat_timeout = db.Column(db.String(16))     #90
+    heartbeat_interval = db.Column(db.String(64))     #30
+    heartbeat_timeout = db.Column(db.String(64))     #90
     #web user
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     #proxies
@@ -97,11 +97,11 @@ class FrpProxy_TCP(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64))
 
-    local_ip = db.Column(db.String(16))#127.0.0.1
-    local_port = db.Column(db.String(16))#22
+    local_ip = db.Column(db.String(64))#127.0.0.1
+    local_port = db.Column(db.String(64))#22
     use_encryption = db.Column(db.Boolean)#false
     use_compression = db.Column(db.Boolean)#false
-    remote_port = db.Column(db.String(16))#6001
+    remote_port = db.Column(db.String(64))#6001
     # web user
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
@@ -114,9 +114,9 @@ class FrpProxy_UDP(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64))
 
-    local_ip = db.Column(db.String(16))#114.114.114.114
-    local_port = db.Column(db.String(16))#53
-    remote_port = db.Column(db.String(16))#6002
+    local_ip = db.Column(db.String(64))#114.114.114.114
+    local_port = db.Column(db.String(64))#53
+    remote_port = db.Column(db.String(64))#6002
     use_encryption = db.Column(db.Boolean)#false
     use_compression = db.Column(db.Boolean)#false
     # web user
@@ -132,16 +132,16 @@ class FrpProxy_HTTP(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64))
 
-    local_ip = db.Column(db.String(16))#127.0.0.1
-    local_port = db.Column(db.String(16))#80
+    local_ip = db.Column(db.String(64))#127.0.0.1
+    local_port = db.Column(db.String(64))#80
     use_encryption = db.Column(db.Boolean)#false
     use_compression = db.Column(db.Boolean)#true
-    http_user = db.Column(db.String(16))#admin
-    http_pwd = db.Column(db.String(16))#admin
-    subdomain = db.Column(db.String(16))#web01
-    custom_domains = db.Column(db.String(16))#web02.yourdomain.com
-    locations = db.Column(db.String(16))#/, / pic
-    host_header_rewrite = db.Column(db.String(16))#example.com
+    http_user = db.Column(db.String(64))#admin
+    http_pwd = db.Column(db.String(64))#admin
+    subdomain = db.Column(db.String(64))#web01
+    custom_domains = db.Column(db.String(64))#web02.yourdomain.com
+    locations = db.Column(db.String(64))#/, / pic
+    host_header_rewrite = db.Column(db.String(64))#example.com
     # web user
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
@@ -154,12 +154,12 @@ class FrpProxy_HTTPS(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64))
 
-    local_ip = db.Column(db.String(16))#127.0.0.1
-    local_port = db.Column(db.String(16))#8000
+    local_ip = db.Column(db.String(64))#127.0.0.1
+    local_port = db.Column(db.String(64))#8000
     use_encryption = db.Column(db.Boolean)#false
     use_compression = db.Column(db.Boolean)#false
-    subdomain = db.Column(db.String(16))#web01
-    custom_domains = db.Column(db.String(16))#web02.yourdomain.com
+    subdomain = db.Column(db.String(64))#web01
+    custom_domains = db.Column(db.String(64))#web02.yourdomain.com
     # web user
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
@@ -172,8 +172,8 @@ class FrpProxy_PluginUnixSocket(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64))
 
-    remote_port = db.Column(db.String(16))#6003
-    plugin_unix_path = db.Column(db.String(16))#/ var / run / docker.sock
+    remote_port = db.Column(db.String(64))#6003
+    plugin_unix_path = db.Column(db.String(64))#/ var / run / docker.sock
     # web user
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
@@ -186,9 +186,9 @@ class FrpProxy_PluginHttp(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64))
 
-    remote_port = db.Column(db.String(16))#6004
-    plugin_http_user = db.Column(db.String(16))#abc
-    plugin_http_passwd = db.Column(db.String(16))#abc
+    remote_port = db.Column(db.String(64))#6004
+    plugin_http_user = db.Column(db.String(64))#abc
+    plugin_http_passwd = db.Column(db.String(64))#abc
     # web user
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
@@ -201,9 +201,9 @@ class FrpProxy_STCP(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64))
 
-    sk = db.Column(db.String(16))#abcdefg
-    local_ip = db.Column(db.String(16))#127.0.0.1
-    local_port = db.Column(db.String(16))#22
+    sk = db.Column(db.String(64))#abcdefg
+    local_ip = db.Column(db.String(64))#127.0.0.1
+    local_port = db.Column(db.String(64))#22
     use_encryption = db.Column(db.Boolean)#false
     use_compression = db.Column(db.Boolean)#false
     # web user
@@ -218,10 +218,10 @@ class FrpProxy_STCPVistor(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64))
 
-    server_name = db.Column(db.String(16))#secret_tcp
-    sk = db.Column(db.String(16))#abcdefg
-    bind_addr = db.Column(db.String(16))#127.0.0.1
-    bind_port = db.Column(db.String(16))#9000
+    server_name = db.Column(db.String(64))#secret_tcp
+    sk = db.Column(db.String(64))#abcdefg
+    bind_addr = db.Column(db.String(64))#127.0.0.1
+    bind_port = db.Column(db.String(64))#9000
     use_encryption = db.Column(db.Boolean)#false
     use_compression = db.Column(db.Boolean)#false
     # web user
