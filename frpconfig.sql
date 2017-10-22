@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2017-10-16 21:26:19
+Date: 2017-10-22 17:20:46
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -27,7 +27,7 @@ CREATE TABLE `alembic_version` (
 -- ----------------------------
 -- Records of alembic_version
 -- ----------------------------
-INSERT INTO `alembic_version` VALUES ('861200649d58');
+INSERT INTO `alembic_version` VALUES ('389069ba1901');
 
 -- ----------------------------
 -- Table structure for frp_http
@@ -36,16 +36,16 @@ DROP TABLE IF EXISTS `frp_http`;
 CREATE TABLE `frp_http` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(64) DEFAULT NULL,
-  `local_ip` varchar(16) DEFAULT NULL,
-  `local_port` varchar(16) DEFAULT NULL,
+  `local_ip` varchar(64) DEFAULT NULL,
+  `local_port` varchar(64) DEFAULT NULL,
   `use_encryption` tinyint(1) DEFAULT NULL,
   `use_compression` tinyint(1) DEFAULT NULL,
-  `http_user` varchar(16) DEFAULT NULL,
-  `http_pwd` varchar(16) DEFAULT NULL,
-  `subdomain` varchar(16) DEFAULT NULL,
-  `custom_domains` varchar(16) DEFAULT NULL,
-  `locations` varchar(16) DEFAULT NULL,
-  `host_header_rewrite` varchar(16) DEFAULT NULL,
+  `http_user` varchar(64) DEFAULT NULL,
+  `http_pwd` varchar(64) DEFAULT NULL,
+  `subdomain` varchar(64) DEFAULT NULL,
+  `custom_domains` varchar(64) DEFAULT NULL,
+  `locations` varchar(64) DEFAULT NULL,
+  `host_header_rewrite` varchar(64) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
   `service_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -64,12 +64,12 @@ DROP TABLE IF EXISTS `frp_https`;
 CREATE TABLE `frp_https` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(64) DEFAULT NULL,
-  `local_ip` varchar(16) DEFAULT NULL,
-  `local_port` varchar(16) DEFAULT NULL,
+  `local_ip` varchar(64) DEFAULT NULL,
+  `local_port` varchar(64) DEFAULT NULL,
   `use_encryption` tinyint(1) DEFAULT NULL,
   `use_compression` tinyint(1) DEFAULT NULL,
-  `subdomain` varchar(16) DEFAULT NULL,
-  `custom_domains` varchar(16) DEFAULT NULL,
+  `subdomain` varchar(64) DEFAULT NULL,
+  `custom_domains` varchar(64) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
   `service_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -88,9 +88,9 @@ DROP TABLE IF EXISTS `frp_pluginhttp`;
 CREATE TABLE `frp_pluginhttp` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(64) DEFAULT NULL,
-  `remote_port` varchar(16) DEFAULT NULL,
-  `plugin_http_user` varchar(16) DEFAULT NULL,
-  `plugin_http_passwd` varchar(16) DEFAULT NULL,
+  `remote_port` varchar(64) DEFAULT NULL,
+  `plugin_http_user` varchar(64) DEFAULT NULL,
+  `plugin_http_passwd` varchar(64) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
   `service_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -109,8 +109,8 @@ DROP TABLE IF EXISTS `frp_pluginunixsocket`;
 CREATE TABLE `frp_pluginunixsocket` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(64) DEFAULT NULL,
-  `remote_port` varchar(16) DEFAULT NULL,
-  `plugin_unix_path` varchar(16) DEFAULT NULL,
+  `remote_port` varchar(64) DEFAULT NULL,
+  `plugin_unix_path` varchar(64) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
   `service_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -129,24 +129,24 @@ DROP TABLE IF EXISTS `frp_services`;
 CREATE TABLE `frp_services` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(64) DEFAULT NULL,
-  `server_addr` varchar(16) DEFAULT NULL,
-  `server_port` varchar(16) DEFAULT NULL,
+  `server_addr` varchar(64) DEFAULT NULL,
+  `server_port` varchar(64) DEFAULT NULL,
   `log_file` varchar(64) DEFAULT NULL,
-  `log_level` varchar(16) DEFAULT NULL,
-  `log_max_days` varchar(16) DEFAULT NULL,
+  `log_level` varchar(64) DEFAULT NULL,
+  `log_max_days` varchar(64) DEFAULT NULL,
   `privilege_token` varchar(64) DEFAULT NULL,
   `admin_addr` varchar(64) DEFAULT NULL,
-  `admin_port` varchar(16) DEFAULT NULL,
+  `admin_port` varchar(64) DEFAULT NULL,
   `admin_user` varchar(64) DEFAULT NULL,
   `admin_pwd` varchar(64) DEFAULT NULL,
-  `pool_count` varchar(16) DEFAULT NULL,
-  `tcp_mux` varchar(16) DEFAULT NULL,
+  `pool_count` varchar(64) DEFAULT NULL,
+  `tcp_mux` varchar(64) DEFAULT NULL,
   `user` varchar(64) DEFAULT NULL,
-  `login_fail_exit` varchar(16) DEFAULT NULL,
-  `protocol` varchar(16) DEFAULT NULL,
+  `login_fail_exit` varchar(64) DEFAULT NULL,
+  `protocol` varchar(64) DEFAULT NULL,
   `start` varchar(128) DEFAULT NULL,
-  `heartbeat_interval` varchar(16) DEFAULT NULL,
-  `heartbeat_timeout` varchar(16) DEFAULT NULL,
+  `heartbeat_interval` varchar(64) DEFAULT NULL,
+  `heartbeat_timeout` varchar(64) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `ix_frp_services_user` (`user`),
@@ -164,9 +164,9 @@ DROP TABLE IF EXISTS `frp_stcp`;
 CREATE TABLE `frp_stcp` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(64) DEFAULT NULL,
-  `sk` varchar(16) DEFAULT NULL,
-  `local_ip` varchar(16) DEFAULT NULL,
-  `local_port` varchar(16) DEFAULT NULL,
+  `sk` varchar(64) DEFAULT NULL,
+  `local_ip` varchar(64) DEFAULT NULL,
+  `local_port` varchar(64) DEFAULT NULL,
   `use_encryption` tinyint(1) DEFAULT NULL,
   `use_compression` tinyint(1) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
@@ -187,10 +187,10 @@ DROP TABLE IF EXISTS `frp_stcpvistor`;
 CREATE TABLE `frp_stcpvistor` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(64) DEFAULT NULL,
-  `server_name` varchar(16) DEFAULT NULL,
-  `sk` varchar(16) DEFAULT NULL,
-  `bind_addr` varchar(16) DEFAULT NULL,
-  `bind_port` varchar(16) DEFAULT NULL,
+  `server_name` varchar(64) DEFAULT NULL,
+  `sk` varchar(64) DEFAULT NULL,
+  `bind_addr` varchar(64) DEFAULT NULL,
+  `bind_port` varchar(64) DEFAULT NULL,
   `use_encryption` tinyint(1) DEFAULT NULL,
   `use_compression` tinyint(1) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
@@ -211,11 +211,11 @@ DROP TABLE IF EXISTS `frp_tcp`;
 CREATE TABLE `frp_tcp` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(64) DEFAULT NULL,
-  `local_ip` varchar(16) DEFAULT NULL,
-  `local_port` varchar(16) DEFAULT NULL,
+  `local_ip` varchar(64) DEFAULT NULL,
+  `local_port` varchar(64) DEFAULT NULL,
   `use_encryption` tinyint(1) DEFAULT NULL,
   `use_compression` tinyint(1) DEFAULT NULL,
-  `remote_port` varchar(16) DEFAULT NULL,
+  `remote_port` varchar(64) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
   `service_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -234,9 +234,9 @@ DROP TABLE IF EXISTS `frp_udp`;
 CREATE TABLE `frp_udp` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(64) DEFAULT NULL,
-  `local_ip` varchar(16) DEFAULT NULL,
-  `local_port` varchar(16) DEFAULT NULL,
-  `remote_port` varchar(16) DEFAULT NULL,
+  `local_ip` varchar(64) DEFAULT NULL,
+  `local_port` varchar(64) DEFAULT NULL,
+  `remote_port` varchar(64) DEFAULT NULL,
   `use_encryption` tinyint(1) DEFAULT NULL,
   `use_compression` tinyint(1) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
