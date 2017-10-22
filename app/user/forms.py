@@ -12,7 +12,7 @@ class proxybaseForm(baseForm):
     frpc = SelectField(u'选择一个已经创建的Frpc：', coerce=int, validators=[DataRequired()])
 
 class localproxybaseForm(proxybaseForm):
-    local_ip = StringField(u'本地ip地址：', validators=[DataRequired(), Length(1, 16)])  # 127.0.0.1
+    local_ip = StringField(u'本地ip地址：')  # 127.0.0.1
     local_port = StringField(u'本地端口：', validators=[DataRequired()])  # 22
     use_encryption = BooleanField(u'是否加密：')  # false
     use_compression = BooleanField(u'是否压缩：')  # false
@@ -38,40 +38,40 @@ class CommonForm(baseForm):
     heartbeat_timeout = StringField(u'心跳超时时间：')  # 90
     submit = SubmitField('添加')
 class TCPForm(localproxybaseForm):
-    remote_port = StringField(u'远程服务器端口：', validators=[DataRequired()])  # 6001
+    remote_port = StringField(u'远程服务器端口：')  # 6001
     submit = SubmitField('添加')
 class UDPForm(localproxybaseForm):
-    remote_port = StringField(u'远程服务器端口：', validators=[DataRequired()])  # 6002
+    remote_port = StringField(u'远程服务器端口：')  # 6002
     submit = SubmitField('添加')
 class HTTPForm(localproxybaseForm):
     http_user = StringField(u'http用户名：')  # admin
     http_pwd = StringField(u'http密码：')  # admin
-    subdomain = StringField(u'子域：', validators=[DataRequired(), Length(1, 16)])  # web01
-    custom_domains = StringField(u'域名：', validators=[DataRequired(), Length(1, 16)])  # web02.yourdomain.com
+    subdomain = StringField(u'子域：')  # web01
+    custom_domains = StringField(u'域名：')  # web02.yourdomain.com
     locations = StringField(u'路径：')  # /, / pic
     host_header_rewrite = StringField(u'头部重写：')  # example.com
     submit = SubmitField('添加')
 class HTTPSForm(localproxybaseForm):
-    subdomain = StringField(u'子域名：', validators=[DataRequired(), Length(1, 16)])  # web01
-    custom_domains = StringField(u'域名：', validators=[DataRequired(), Length(1, 16)])  # web02.yourdomain.com
+    subdomain = StringField(u'子域名：')  # web01
+    custom_domains = StringField(u'域名：')  # web02.yourdomain.com
     submit = SubmitField('添加')
 class PluginUnixSocketForm(proxybaseForm):
-    remote_port = StringField(u'远程服务器端口：', validators=[DataRequired()])  # 6003
-    plugin_unix_path = StringField(u'Unix socket位置：', validators=[DataRequired(), Length(1, 16)])  # / var / run / docker.sock
+    remote_port = StringField(u'远程服务器端口：')  # 6003
+    plugin_unix_path = StringField(u'Unix socket位置：')  # / var / run / docker.sock
     submit = SubmitField('添加')
 class PluginHttpForm(proxybaseForm):
-    remote_port = StringField(u'远程服务器端口：', validators=[DataRequired()])  # 6004
+    remote_port = StringField(u'远程服务器端口：')  # 6004
     plugin_http_user = StringField(u'http用户名：')  # abc
     plugin_http_passwd = StringField(u'http密码：')  # abc
     submit = SubmitField('添加')
 class stcpForm(localproxybaseForm):
-    sk = StringField(u'校验码（sk）：', validators=[DataRequired(), Length(1, 16)])  # abcdefg
+    sk = StringField(u'校验码（sk）：')  # abcdefg
     submit = SubmitField('添加')
 class stcpVistorForm(proxybaseForm):
-    server_name = StringField(u'服务器名：', validators=[DataRequired(), Length(1, 16)])  # secret_tcp
-    sk = StringField(u'校验码（sk）：', validators=[DataRequired(), Length(1, 16)])  # abcdefg
-    bind_addr = StringField(u'绑定地址：', validators=[DataRequired(), Length(1, 16)])  # 127.0.0.1
-    bind_port = StringField(u'绑定端口：', validators=[DataRequired()])  # 9000
+    server_name = StringField(u'服务器名：')  # secret_tcp
+    sk = StringField(u'校验码（sk）：')  # abcdefg
+    bind_addr = StringField(u'绑定地址：')  # 127.0.0.1
+    bind_port = StringField(u'绑定端口：')  # 9000
     use_encryption = BooleanField(u'是否加密：')  # false
     use_compression = BooleanField(u'是否压缩：')  # false
     submit = SubmitField('添加')
